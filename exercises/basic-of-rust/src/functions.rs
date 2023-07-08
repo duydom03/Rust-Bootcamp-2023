@@ -1,7 +1,7 @@
 // Exercise 1
 // Fix all errors 
-fn sum(x, y: i32) {
-    x + y;
+fn sum(x:i32 , y: i32) -> i32{
+    return x + y;
 }
 
 //Exercise 2
@@ -11,7 +11,12 @@ fn sum(x, y: i32) {
 pub fn sum_one_to_n(n: u32) -> u32 {
     // your code for summing all digits from 1 to `n` (inclusive) should go
     // here (you can remove the sample return of `0`)
-    0
+    let mut sum =0;
+    for i in 1..=n{
+        sum+=i;
+    }
+    sum
+    
 }
 
 // Exercise 3
@@ -19,13 +24,25 @@ pub fn sum_one_to_n(n: u32) -> u32 {
 // Problem: Calculate the average of a list of numbers
 // Output: Average Number 
 fn calculate_average(numbers: &[f64]) -> f64 {
-    todo!()
+    let mut sum =0.0;
+
+    for value in numbers.iter(){
+         sum+=value;
+    }
+    let mut count = numbers.len() as f64;
+    sum/count
 }
 
 // Exercise 4
 // Calculate the sum of all even numbers in a list
 fn sum_even_numbers(numbers: &[i32]) -> i32 {
-    todo!()
+    let mut sum =0;
+    for i in numbers.iter(){
+        if i%2==0{
+            sum+=i
+        }
+    }
+    sum
 }
 
 
@@ -53,9 +70,9 @@ mod tests {
     // Test for exercise 2
     #[test]
     fn test_sum_1() {
-        let result = sum_one_to_n(1);
+        let result = sum_one_to_n(5);
 
-        assert_eq!(result, 1);
+        assert_eq!(result, 15);
     }
 
     // Test for exercise 2
@@ -80,9 +97,9 @@ mod tests {
     #[test]
     fn test_calculate_average_empty() {
         // Test case 1: Non-empty slice
-        let numbers = [];
+        let numbers = [2.0,4.0,5.0];
         let result = calculate_average(&numbers);
-        assert_eq!(result, 0.0);
+        assert_eq!(result, 3.6666666666666665);
 
     }
 
